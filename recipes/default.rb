@@ -3,7 +3,8 @@
 # This portion of the recipe runs on all instances, except the utility instances.  You don't want haproxy on the utility instances but you do on solo|app|app_master
 if ['solo','app','app_master'].include?(node[:instance_role])
   require_recipe "riak::haproxy"
-  require_recipe "riak::basho_bench"
+  #require_recipe "riak::basho_bench"
+  require_recipe "riak::app_config"
   # Remove old version of Erlang that is NOT new enough
   package "dev-lang/erlang" do
     version "erlang-12.2.5-r1"
